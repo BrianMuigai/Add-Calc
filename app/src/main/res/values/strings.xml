@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Simple Cash Register</string>
+    <string name="ksh_0">KSH 0.00</string>
+</resources>
