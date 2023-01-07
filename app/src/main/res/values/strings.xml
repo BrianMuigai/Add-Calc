@@ -15,5 +15,7 @@
     <string name="number_nine">9</string>
     <string name="btn_clear">DEL</string>
     <string name="btn_add">ADD</string>
+    <string name="ksh">KSH</string>
+    <string name="no_record">No Record!</string>
 
 </resources>

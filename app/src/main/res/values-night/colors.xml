@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="editTextBg">#B3F4F3F8</color>
-    <color name="keypad">#B3F8F9FD</color>
+    <color name="editTextBg">#66F4F3F8</color>
+    <color name="keypad">#73F8F9FD</color>
 </resources>

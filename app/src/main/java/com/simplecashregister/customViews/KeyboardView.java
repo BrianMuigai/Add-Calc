@@ -32,7 +32,7 @@ public class KeyboardView extends FrameLayout implements View.OnClickListener {
         init();
     }
 
-    public void setCustomListener(KeyboardListener listener) {
+    public void setAddListener(KeyboardListener listener) {
         this.listener = listener;
     }
 
@@ -75,8 +75,10 @@ public class KeyboardView extends FrameLayout implements View.OnClickListener {
             }
             break;
             case R.id.t9_key_add: {  // handle add button
-                if (listener != null) listener.onAdd(text.getText().toString());
-                text.setText(null);
+                if (!text.getText().toString().isEmpty()) {
+                    if (listener != null) listener.onAdd(text.getText().toString());
+                    text.setText(null);
+                }
             }
             break;
         }
