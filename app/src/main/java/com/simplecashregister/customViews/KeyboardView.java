@@ -3,6 +3,7 @@ package com.simplecashregister.customViews;
 import android.content.Context;
 import android.text.Editable;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -12,7 +13,7 @@ import androidx.annotation.IdRes;
 
 import com.simplecashregister.R;
 
-public class KeyboardView extends FrameLayout implements View.OnClickListener {
+public class KeyboardView extends FrameLayout implements View.OnClickListener, View.OnLongClickListener {
 
     private EditText text;
     private KeyboardListener listener;
@@ -44,6 +45,7 @@ public class KeyboardView extends FrameLayout implements View.OnClickListener {
     private void initViews() {
         text = $(R.id.text_field);
         $(R.id.t9_key_0).setOnClickListener(this);
+        $(R.id.t9_key_0).setOnLongClickListener(this);
         $(R.id.t9_key_1).setOnClickListener(this);
         $(R.id.t9_key_2).setOnClickListener(this);
         $(R.id.t9_key_3).setOnClickListener(this);
@@ -58,10 +60,20 @@ public class KeyboardView extends FrameLayout implements View.OnClickListener {
     }
 
     @Override
+    public boolean onLongClick(View view) {
+        text.append(".");
+        return true;
+    }
+
+    @Override
     public void onClick(View v) {
         // handle number button click
         if (v.getTag() != null && "number_button".equals(v.getTag())) {
-            text.append(((TextView) v).getText());
+            TextView view = (TextView) v;
+            float newVal = Float.parseFloat(text.getText().toString() + view.getText());
+            if (Float.parseFloat(text.getText().toString().isEmpty() ? "0" : text.getText().toString()) < 1000000 && newVal < 1000000) {
+                text.append(view.getText());
+            }
             return;
         }
         switch (v.getId()) {
